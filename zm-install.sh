@@ -4,7 +4,7 @@ read -p "This script installs ZoneMinder 1.36.x on Debian 12 with LAMP (MySQL or
 This script must be run as root!
 Press Enter to continue or Ctrl + c to quit" nothing
 clear
-apt install -y lsb-release gnupg2 apache2 mariadb-server php libapache2-mod-php php-mysql
+apt install -y lsb-release gnupg2 
 echo "deb https://zmrepo.zoneminder.com/debian/release-1.36 "`lsb_release  -c -s`"/" | tee /etc/apt/sources.list.d/zoneminder.list
 wget -O - https://zmrepo.zoneminder.com/debian/archive-keyring.gpg | apt-key add -
 mv /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d/
@@ -32,6 +32,6 @@ mv $HOME/zoneminder/ru_ru.php / /usr/share/zoneminder/www/lang/
 mv $HOME/zoneminder/recreate_crt /etc/cron.d/
 chmod +x $HOME/zoneminder/recreate_cert.sh
 a2ensite default-ssl.conf
-systemctl apache2 reload
+systemctl reload apache2
 read -p "Install complete. Open Zoneminder/Options and set the timezone. Press enter to continue" nothing
 clear
