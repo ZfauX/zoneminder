@@ -5,7 +5,7 @@ This script must be run as root!
 Press Enter to continue or Ctrl + c to quit" nothing
 clear
 apt install -y lsb-release gnupg2 
-echo "deb https://zmrepo.zoneminder.com/debian/release-1.36 "`lsb_release  -c -s`"/" | tee /etc/apt/sources.list.d/zoneminder.list
+echo "deb https://zmrepo.zoneminder.com/debian/master "`lsb_release  -c -s`"/" | tee /etc/apt/sources.list.d/zoneminder.list
 wget -O - https://zmrepo.zoneminder.com/debian/archive-keyring.gpg | apt-key add -
 mv /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d/
 read -p "Warning! Check above to insure the line says OK. If not the GPG signing key was not installed and you will need to figure out why before continuing. 
