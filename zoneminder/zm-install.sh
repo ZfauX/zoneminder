@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 clear
-read -p "This script installs ZoneMinder 1.36.x on Debian 12 with LAMP (MySQL or Mariadb) installed...
+read -p "This script installs ZoneMinder 1.37.x on Debian 12 with LAMP (MySQL or Mariadb) installed...
 This script must be run as root!
 Press Enter to continue or Ctrl + c to quit" nothing
 clear
@@ -26,11 +26,12 @@ a2enmod rewrite
 a2enmod headers
 a2enmod expires
 a2enmod ssl
-mv $HOME/zoneminder/000-default.conf /etc/apache2/sites-available/
-mv $HOME/zoneminder/default-ssl.conf /etc/apache2/sites-available/
-mv $HOME/zoneminder/ru_ru.php / /usr/share/zoneminder/www/lang/
-mv $HOME/zoneminder/recreate_crt /etc/cron.d/
-chmod +x $HOME/zoneminder/recreate_cert.sh
+mv $HOME/zoneminder/apache/000-default.conf /etc/apache2/sites-available/
+mv $HOME/zoneminder/apache/default-ssl.conf /etc/apache2/sites-available/
+mv $HOME/zoneminder/apache/ports.conf /etc/apache2/
+mv $HOME/zoneminder/zoneminder/ru_ru.php / /usr/share/zoneminder/www/lang/
+mv $HOME/zoneminder/cron/recreate_crt /etc/cron.d/
+chmod +x $HOME/zoneminder/ssl/recreate_cert.sh
 a2ensite default-ssl.conf
 systemctl reload apache2
 read -p "Install complete. Open Zoneminder/Options and set the timezone. Press enter to continue" nothing
