@@ -31,7 +31,7 @@ mv $HOME/zoneminder/apache/default-ssl.conf /etc/apache2/sites-available/
 mv $HOME/zoneminder/apache/ports.conf /etc/apache2/
 mv $HOME/zoneminder/zoneminder/ru_ru.php / /usr/share/zoneminder/www/lang/
 mv $HOME/zoneminder/cron/recreate_crt /etc/cron.d/
-chmod +x $HOME/zoneminder/ssl/recreate_cert.sh
+chmod 775 $HOME/zoneminder/ssl/recreate_cert.sh
 a2ensite default-ssl.conf
 systemctl reload apache2
 read -p "Install complete. Open Zoneminder/Options and set the timezone. Press enter to continue" nothing
