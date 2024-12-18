@@ -29,7 +29,6 @@ a2enmod ssl
 mv $HOME/zoneminder/apache/000-default.conf /etc/apache2/sites-available/
 mv $HOME/zoneminder/apache/default-ssl.conf /etc/apache2/sites-available/
 mv $HOME/zoneminder/apache/ports.conf /etc/apache2/
-mv $HOME/zoneminder/zoneminder/ru_ru.php / /usr/share/zoneminder/www/lang/
 mv $HOME/zoneminder/cron/recreate_crt /etc/cron.d/
 chmod 775 $HOME/zoneminder/ssl/recreate_cert.sh
 a2ensite default-ssl.conf
