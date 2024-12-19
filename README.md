@@ -5,7 +5,7 @@
 В директории cron находиться задача для выполнения скрипта по обновлению сертификатов.
 
 #Инструкция по установке
-1. Устновить git - '''sudo apt install git''
-2. Склонировать репозиторий - '''git clone https://github.com/ZfauX/zoneminder'''
-3. Дать права запуска скрипту установки - ''' chmod 775 $HOME/zoneminder/zoneminder/zm-install.sh'''
-4. Запустить скрипт установки ''' $HOME/zoneminder/zoneminder/zm-install.sh'''
+1. Устновить git - ```sudo apt install git```
+2. Склонировать репозиторий - ```git clone https://github.com/ZfauX/zoneminder```
+3. Дать права запуска скрипту установки - ``` chmod 775 $HOME/zoneminder/zoneminder/zm-install.sh```
+4. Запустить скрипт установки ``` $HOME/zoneminder/zoneminder/zm-install.sh```
