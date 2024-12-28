@@ -4,7 +4,9 @@ read -p "This script installs ZoneMinder 1.37.x on Debian 12 with LAMP (MySQL or
 This script must be run as root!
 Press Enter to continue or Ctrl + c to quit" nothing
 clear
-apt install -y lsb-release gnupg2 net-tools janus
+apt install -y lsb-release gnupg2 net-tools janus libjs-janus-gateway
+mkdir /usr/share/javascript/janus
+ln -s /usr/share/javascript/janus-gateway/janus.js /usr/share/javascript/janus/
 echo "deb https://zmrepo.zoneminder.com/debian/master "`lsb_release  -c -s`"/" | tee /etc/apt/sources.list.d/zoneminder.list
 wget -O - https://zmrepo.zoneminder.com/debian/archive-keyring.gpg | apt-key add -
 mv /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d/
