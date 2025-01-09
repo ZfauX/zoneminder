@@ -24,6 +24,7 @@ mv zoneminder.crt /etc/ssl/certs/
 rm zoneminder.csr
 adduser www-data video
 a2enconf zoneminder
+a2enconf javascript-common
 a2enmod rewrite
 a2enmod headers
 a2enmod expires
