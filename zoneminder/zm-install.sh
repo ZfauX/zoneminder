@@ -4,9 +4,7 @@ read -p "This script installs ZoneMinder 1.37.x on Debian 12 with LAMP (MySQL or
 This script must be run as root!
 Press Enter to continue or Ctrl + c to quit" nothing
 clear
-apt install -y lsb-release gnupg2 net-tools janus libjs-janus-gateway
-mkdir /usr/share/javascript/janus
-ln -s /usr/share/javascript/janus-gateway/janus.js /usr/share/javascript/janus/
+apt install -y lsb-release gnupg2 net-tools golang-go 
 echo "deb https://zmrepo.zoneminder.com/debian/master "`lsb_release  -c -s`"/" | tee /etc/apt/sources.list.d/zoneminder.list
 wget -O - https://zmrepo.zoneminder.com/debian/archive-keyring.gpg | apt-key add -
 mv /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d/
@@ -24,7 +22,6 @@ mv zoneminder.crt /etc/ssl/certs/
 rm zoneminder.csr
 adduser www-data video
 a2enconf zoneminder
-a2enconf javascript-common
 a2enmod rewrite
 a2enmod headers
 a2enmod expires
@@ -36,5 +33,10 @@ mv $HOME/zoneminder/cron/recreate_crt /etc/cron.d/
 chmod 775 $HOME/zoneminder/ssl/recreate_cert.sh
 a2ensite default-ssl.conf
 systemctl reload apache2
+git clone https://github.com/deepch/RTSPtoWeb
+sed -i 's/"http_demo": true/"http_demo": false/' $HOME/zoneminder/RTSPtoWeb/config.json
+mv $HOME/zoneminder/RTSPtoWeb/rtsptoweb.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable --now rtsptoweb
 read -p "Install complete. Open Zoneminder/Options and set the timezone. Press enter to continue" nothing
 clear
