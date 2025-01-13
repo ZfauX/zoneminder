@@ -33,9 +33,10 @@ mv $HOME/zoneminder/cron/recreate_crt /etc/cron.d/
 chmod 775 $HOME/zoneminder/ssl/recreate_cert.sh
 a2ensite default-ssl.conf
 systemctl reload apache2
+cd $HOME
 git clone https://github.com/deepch/RTSPtoWeb
-sed -i 's/"http_demo": true/"http_demo": false/' $HOME/zoneminder/RTSPtoWeb/config.json
-cd $HOME/zoneminder/RTSPtoWeb
+cd $HOME/RTSPtoWeb
+sed -i 's/"http_demo": true/"http_demo": false/' config.json
 go build
 mv $HOME/zoneminder/RTSPtoWeb/rtsptoweb.service /etc/systemd/system/
 systemctl daemon-reload
