@@ -35,6 +35,8 @@ a2ensite default-ssl.conf
 systemctl reload apache2
 git clone https://github.com/deepch/RTSPtoWeb
 sed -i 's/"http_demo": true/"http_demo": false/' $HOME/zoneminder/RTSPtoWeb/config.json
+cd $HOME/zoneminder/RTSPtoWeb
+go build
 mv $HOME/zoneminder/RTSPtoWeb/rtsptoweb.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable --now rtsptoweb
