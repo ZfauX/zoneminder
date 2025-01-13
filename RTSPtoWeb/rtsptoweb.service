@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/root/RTSPtoWeb/
-ExecStart=/root/RTSPtoWeb/RTSPtoWeb
+ExecStart=/root/RTSPtoWeb/RTSPtoWeb -config /root/RTSPtoWeb/config.json
 ExecReload=/bin/kill -s HUP $MAINPID
 RestartSec=5
 Restart=always
