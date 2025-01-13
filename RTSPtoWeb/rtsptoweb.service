@@ -1,0 +1,15 @@
+[Unit]
+Description=RTSPtoWeb daemon 
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/root/RTSPtoWeb/
+ExecStart=/home/root/RTSPtoWeb/GO111MODULE=on go run *.go
+ExecReload=/bin/kill -s HUP $MAINPID
+RestartSec=5
+Restart=always
+OOMPolicy=continue
+
+[Install]
+WantedBy=multi-user.target
