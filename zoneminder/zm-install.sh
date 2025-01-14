@@ -37,7 +37,7 @@ cd $HOME
 git clone https://github.com/deepch/RTSPtoWeb
 cd $HOME/RTSPtoWeb
 sed -i 's/"http_demo": true/"http_demo": false/' config.json
-go build
+GO111MODELE=on go build
 mv $HOME/zoneminder/RTSPtoWeb/rtsptoweb.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable --now rtsptoweb
