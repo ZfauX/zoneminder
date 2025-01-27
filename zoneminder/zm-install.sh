@@ -40,7 +40,7 @@ chmod 775 $HOME/zoneminder/ssl/recreate_cert.sh
 a2ensite default-ssl.conf
 systemctl reload apache2
 cd $HOME
-git clone https://github.com/deepch/RTSPtoWeb
+git clone https://github.com/ZfauX/RTSPtoWeb
 cd $HOME/RTSPtoWeb
 sed -i 's/"http_dir": "web"/"http_dir": "/root/RTSPtoWeb/web"/' config.json
 sed -i 's/"https": false/https": true/' config.json
